@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle psd-extract",
+        "command": "psd-extract:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "psd-extract",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "psd-extract:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
