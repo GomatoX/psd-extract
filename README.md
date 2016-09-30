@@ -1,10 +1,10 @@
 # psd-extract
 
-Atom.io package which helps to extract informatio from photoshop layers.
+Atom.io package which helps to extract information from photoshop layers.
 
 ![psd-extract](http://skersgatvis.lt/psd-extract.png)
 
-It's very early versio so it only collects css information, below is all supported css properties:
+It's very early version so it only collects css information, below is all supported css properties:
 
     width
     height
