@@ -1,12 +1,11 @@
 {
   "name": "psd-extract",
   "main": "./lib/psd-extract",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.1.0",
+  "description": "Atom package which helps to extract information from .psd files.",
   "keywords": [
   ],
-  
-  "repository": "https://github.com/atom/psd-extract",
+  "repository": "https://github.com/GomatoX/psd-extract",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
