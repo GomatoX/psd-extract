@@ -3,6 +3,8 @@
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
 @import "ui-variables";
+@import "progress";
+@import "buttons";
 
 .psd-extract {
 	width: 500px;
@@ -38,178 +40,191 @@
 			}
 		}
 	}
-}
-
-.resizer {
-	width: 5px;
-	cursor: col-resize;
-	position: relative;
-	z-index: 10;
-	-webkit-user-drag: element;
-}
-
-.exporter {
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	width: calc( 100% - 10px );
-	padding-top: 9px;
-	padding-right: 9px;
-}
-#importer {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	display: none;
-	
-	&.active {
-		display: block;
+	.resizer {
+		width: 5px;
+		cursor: col-resize;
+		position: relative;
+		z-index: 10;
+		-webkit-user-drag: element;
 	}
-	
-	&.over {
-		background-color: rgba( 255, 255, 255, 0.2);
-	}
-	
-	&:after {
+
+	.exporter {
+		flex-grow: 1;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		flex-direction: row;
+		width: calc( 100% - 10px );
+		padding-top: 9px;
+		padding-right: 9px;
+	}
+	#importer {
 		position: absolute;
-		color: #666;
-		content: "Drop file here";
-		border: 2px dashed #666;
-		width: 150px;
-		height: 150px;
-		top: 50%;
-		left: 50%;
-		transform: translate( -50%, -50% );
-	}
-}
-#preview {
-	position: relative;
-	width: 100%;
-	overflow: auto;
-	height: 100vh;
-	text-align: center;
-	display: none;
-	overflow: hidden;
-	padding-top: 50px;
-	
-	&.active {
-		display: block;
-	}
-	
-	.inner {
-		display: inline-block;
-		position: relative;
-		transform-origin: left top;
-		// overflow: hidden;
-	}
-	img {
-		display: block;
-		width: auto;
-	}
-	
-	.controls {
+		height: 100%;
 		width: 100%;
-		padding: 5px;
-		position: absolute;
 		top: 0;
 		left: 0;
-		text-align: left;
-		background-color: #21252b;
+		display: none;
 		
-		.back,
-		.zoom-out,
-		.zoom-in {
-			background-color: #fff;
-			display: inline-block;
-			margin: 0 3px;
-			padding: 5px;
-			cursor: pointer;
-			
-			&:after {
-				content: "Zoom in"
-			}
+		&.active {
+			display: block;
 		}
-		.zoom-out {
-			
-			&:after {
-				content: "Zoom out"
-			}
+		
+		&.over {
+			background-color: rgba( 255, 255, 255, 0.2);
 		}
-		.back {
+		
+		&:after {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			color: #666;
+			content: "Drop file here";
+			border: 2px dashed #666;
+			width: 150px;
+			height: 150px;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+		}
+		
+		.loading-spinner-small {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+			display: none;
+		}
+		
+		&.loading {
+			
+			.loading-spinner-small {
+				display: block;
+			}
 			
 			&:after {
-				content: "Back"
+				display: none;
 			}
 		}
 	}
-}
-#layers {
-	height: 100vh;
-	width: 400px;
-	background-color: #666;
-	overflow: auto;
-	display: none;
-	color: #333;
-	
-	ul {
-		padding: 0;
-		margin: 0;
-		line-height: 1.2;
+	#preview {
+		position: relative;
+		width: 100%;
+		overflow: auto;
+		height: 100vh;
+		text-align: center;
+		display: none;
+		overflow: hidden;
+		padding-top: 50px;
 		
-		li {
-			list-style: none;
+		&.active {
+			display: block;
+		}
+		
+		.inner {
+			display: inline-block;
+			position: relative;
+			transform-origin: left top;
+		}
+		img {
+			display: block;
+			width: auto;
+		}
+		
+		.controls {
+			width: 100%;
+			padding: 5px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: left;
+			background-color: #21252b;
 			
-			.layer-item {
-				padding: 10px 15px;
+			.back,
+			.zoom-out,
+			.zoom-in {
+				display: inline-block;
+				margin-right: 3px;
+				cursor: pointer;
 				
-				&:hover {
-					background-color: #fff;
+				&:after {
+					content: "Zoom in"
+				}
+			}
+			.zoom-out {
+				
+				&:after {
+					content: "Zoom out"
+				}
+			}
+			.back {
+				
+				&:after {
+					content: "Back"
 				}
 			}
 		}
+	}
+	#layers {
+		height: 100vh;
+		width: 400px;
+		background-color: #666;
+		overflow: auto;
+		display: none;
+		color: #333;
 		
-		&.level-1 {
+		ul {
+			padding: 0;
+			margin: 0;
+			line-height: 1.2;
 			
-		}
-		
-		&.level-2 {
-			.layer-item {
-				padding-left: 30px;
+			li {
+				list-style: none;
+				
+				.layer-item {
+					padding: 10px 15px;
+					
+					&:hover {
+						background-color: #fff;
+					}
+				}
 			}
-		}
-		
-		&.level-3 {
 			
-			.layer-item {
-				padding-left: 30px;
+			&.level-1 {}
+			
+			&.level-2 {
+				.layer-item {
+					padding-left: 30px;
+				}
+			}
+			
+			&.level-3 {
+				
+				.layer-item {
+					padding-left: 30px;
+				}
 			}
 		}
 	}
-}
-#objects {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-.obj {
-	position: absolute;
-	
-	&:hover {
-		background-color: rgba( 105, 210, 231, 0.3 );
+	#objects {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
-}
+	.obj {
+		position: absolute;
+		
+		&:hover {
+			background-color: rgba( 105, 210, 231, 0.3 );
+		}
+	}
 
-.color-preview {
-	width: 10px;
-	box-shadow: 0 0 3px 0 rgba( 0,0,0,0.3);
-	height: 10px;
-	display: inline-block;
+	.color-preview {
+		width: 10px;
+		box-shadow: 0 0 3px 0 rgba( 0,0,0,0.3);
+		height: 10px;
+		display: inline-block;
+	}
 }
