@@ -1,7 +1,7 @@
 {
   "name": "psd-extract",
   "main": "./lib/psd-extract",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Atom package which helps to extract information from .psd files.",
   "keywords": [
   ],
